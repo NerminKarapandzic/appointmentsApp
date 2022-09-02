@@ -1,0 +1,13 @@
+<div class="flex flex-col">
+
+  <div class="flex">
+    <!--Picker-->
+    <div class="w-1/4">
+      <mat-calendar (selectedChange)="dateChanged($event)" #calendar></mat-calendar>
+
+    </div>
+    <div class="w-3/4">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

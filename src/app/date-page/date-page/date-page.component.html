@@ -1,0 +1,12 @@
+<div class="flex flex-col p-4">
+
+  <h2 class="text-2xl">{{date.toDateString()}}</h2>
+
+  <!--Hours container-->
+  <div class="flex flex-col py-4">
+    <!--Hour-->
+    <app-hour class="border-t py-6 relative" *ngFor="let hour of hours"
+              [date]="getDateWithStartOfHour(hour)" [$appointments]="getAppointmentsForDate(hour)"></app-hour>
+  </div>
+
+</div>

@@ -1,0 +1,9 @@
+<span class="absolute -top-2.5 bg-gray-800 text-white px-1 rounded left-0">{{date.getHours()}} : 00</span>
+
+<div class="flex gap-x-4 overflow-x-auto px-2" *ngIf="appointments && appointments.length > 0">
+  <div *ngFor="let appointment of appointments"
+       class="flex flex-col gap-y-0.5 px-2 py-0.5 rounded bg-gray-700 text-white">
+    <span>{{appointment.id}}</span>
+    <span>From: {{appointment.from.getHours() + ':00'}} to: {{appointment.to.getHours() + ':00'}}</span>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div *ngIf="data.appointments && data.appointments.length > 0">
+  <!--Show appointment info-->
+  <div class="flex flex-col">
+    <mat-list>
+      <div mat-subheader>Appointments for {{data.date | date: 'mediumDate'}}</div>
+      <mat-list-item *ngFor="let appointment of data.appointments">
+        <div mat-line>{{appointment.id}}</div>
+        <div mat-line class="flex flex-col">
+          from: {{appointment.from | date: 'shortTime'}}
+          to: {{appointment.to | date: 'shortTime'}}
+        </div>
+        <button mat-icon-button (click)="deleteAppointment(appointment.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>
+
+<!--Show form-->
+<div class="flex flex-col" [formGroup]="appointmentForm">
+
+  <div class="flex flex-col">
+    <mat-form-field appearance="fill">
+      <mat-label>Start time</mat-label>
+      <mat-select formControlName="dateFrom" (selectionChange)="updateAppointmentForm($event)">
+        <mat-option *ngFor="let hour of hours" [value]="hour">{{hour}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>End time</mat-label>
+      <mat-select formControlName="dateTo">
+        <mat-option *ngFor="let hour of hoursTo" [value]="hour">{{hour}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <button mat-button (click)="addAppointment()">Add</button>
+</div>
